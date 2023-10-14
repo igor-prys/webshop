@@ -22,7 +22,7 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
-    public Optional<Item> get(Long id){
+    public Optional<Item> getItem(Long id){
         return itemRepository.findById(id);
     }
 

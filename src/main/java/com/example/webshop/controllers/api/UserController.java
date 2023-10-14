@@ -1,14 +1,14 @@
-package com.example.webshop.controllers;
+package com.example.webshop.controllers.api;
 
 import com.example.webshop.dto.UserDto;
 import com.example.webshop.dto.UserMapper;
+import com.example.webshop.entities.Item;
 import com.example.webshop.entities.User;
 import com.example.webshop.exceptions.NoSuchUserException;
 import com.example.webshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,6 +45,15 @@ public class UserController {
         }
         User user = userOptional.get();
         return userMapper.convert(user);
+    }
+    @GetMapping("/items/{id}")
+    public List<Item> getUserItems(@PathVariable long  id){
+        Optional<User> userOptional = userService.getUser(id);
+        if (userOptional.isEmpty()) {
+            throw new NoSuchUserException(String.format("User with id %d was not found", id));
+        }
+        User user = userOptional.get();
+        return user.getItems();
     }
 
     @PostMapping

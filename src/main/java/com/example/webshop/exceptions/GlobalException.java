@@ -12,6 +12,7 @@ public class GlobalException {
         ExceptionData info = new ExceptionData();
         info.setInfo(noSuchUserException.getMessage());
         return new ResponseEntity(info, HttpStatus.NOT_FOUND);
+
     }
 
     @ExceptionHandler

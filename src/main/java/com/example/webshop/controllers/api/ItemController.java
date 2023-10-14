@@ -1,4 +1,4 @@
-package com.example.webshop.controllers;
+package com.example.webshop.controllers.api;
 
 import com.example.webshop.entities.Item;
 import com.example.webshop.exceptions.NoSuchItemException;
@@ -19,9 +19,9 @@ public class ItemController {
         this.itemService=itemService;
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public Item getItem(@PathVariable long id){
-        Optional<Item>item=itemService.get(id);
+        Optional<Item>item=itemService.getItem(id);
         if(item.isEmpty()){
             throw new NoSuchItemException( String.format("Item with id %d was not found", id));
         }
@@ -45,7 +45,7 @@ public class ItemController {
 
     @DeleteMapping("{id}")
     public String deleteItem(@PathVariable long id){
-        Optional<Item> item=itemService.get(id);
+        Optional<Item> item=itemService.getItem(id);
         if(item.isEmpty()){
             throw new NoSuchItemException(String.format("Item with id %d was not found", id));
         }

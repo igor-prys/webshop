@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New user</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/users}" th:object="${newUser}">
+    <lable for="name">Enter name:</lable>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+    <lable for="surname">Enter surname:</lable>
+    <input type="text" th:field="*{surname}" id="surname">
+    <br/>
+    <lable for="nickname">Enter nickname:</lable>
+    <input type="text" th:field="*{nickname}" id="nickname">
+    <br/>
+    <lable for="password">Enter password:</lable>
+    <input type="text" th:field="*{password}" id="password">
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+</body>
+</html>
