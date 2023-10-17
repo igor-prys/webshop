@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Item</title>
+</head>
+<body>
+<p th:text="'id: '+${item.id}"> value</p>
+<p th:text="'Name: '+${item.name}">value</p>
+<p th:text="'Description: '+${item.description}">value</p>
+<p th:text="'Present: '+${item.isPresent}">value</p>
+<p th:text="'Type: '+${item.type}">value</p>
+
+<form th:method="DELETE" th:action="@{/items/{id}(id=${item.id})}">
+    <input type="submit" value="Delete Item"/>
+</form>
+
+<form th:method="get" th:action="@{/items/edit/{id}(id=${item.id})}">
+    <input type="submit" value="Edit item">
+</form>
+</body>
+</html>

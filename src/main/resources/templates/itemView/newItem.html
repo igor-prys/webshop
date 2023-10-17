@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New Item</title>
+</head>
+<body>
+<form th:method="post" th:action="@{/items}" th:object="${newItem}">
+    <label for="name">Enter name</label>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+    <label for="description">Enter description</label>
+    <input type="text" th:fied="*{description}" id="description">
+    <br/>
+    <label for="type">Choose type</label>
+    <input type="text" th:field="*{type}" id="type">
+    <br/>
+    <label>
+        <input type="checkbox" th:field="*{present}"/> Is item present in store?
+    </label>
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+</body>
+</html>

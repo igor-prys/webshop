@@ -2,7 +2,6 @@ package com.example.webshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import jdk.jfr.BooleanFlag;
 import lombok.*;
 
 @Data
@@ -16,7 +15,9 @@ public class Item {
 
     private String description;
 
-    private boolean isPresent;
+
+    @Column(name = "is_Present")
+    private boolean present;
 
     private Type type;
 
@@ -28,20 +29,7 @@ public class Item {
     public Item() {
     }
 
-    public boolean isPresent() {
-        return this.isPresent;
-    }
-
-    public void setPresent(boolean isPresent) {
-        this.isPresent = isPresent;
-    }
-
-    protected boolean canEqual(final Object other) {
-        return other instanceof Item;
-    }
-
-
-    private enum Type{
+    private enum Type {
         TOY, FOOD, COSMETICS, OTHER;
     }
 }

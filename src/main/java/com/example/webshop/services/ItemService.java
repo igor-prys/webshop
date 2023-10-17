@@ -14,25 +14,27 @@ public class ItemService {
     private final ItemRepository itemRepository;
 
     @Autowired
-    public ItemService(ItemRepository itemRepository){
-        this.itemRepository=itemRepository;
+    public ItemService(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
     }
 
-    public Item save(Item item){
+    public Item save(Item item) {
         return itemRepository.save(item);
     }
 
-    public Optional<Item> getItem(Long id){
+    public Optional<Item> getItem(Long id) {
         return itemRepository.findById(id);
     }
 
-    public List<Item> getAll(){
-       return itemRepository.findAll();
+    public List<Item> getAll() {
+        return itemRepository.findAll();
     }
-    public Item update(Item item){
+
+    public Item update(Item item) {
         return itemRepository.save(item);
     }
-    public void delete(Long id){
+
+    public void delete(Long id) {
         itemRepository.deleteById(id);
     }
 }

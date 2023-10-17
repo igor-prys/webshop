@@ -1,7 +1,7 @@
 package com.example.webshop.exceptions;
 
-public class NoSuchUserException extends RuntimeException{
-    public NoSuchUserException(String message){
+public class NoSuchUserException extends RuntimeException {
+    public NoSuchUserException(String message) {
         super(message);
     }
 }

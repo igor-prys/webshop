@@ -12,9 +12,10 @@ import java.util.Arrays;
 public class WebshopConfiguration {
 
     @Bean
-    public ModelMapper getModelMapper(){
+    public ModelMapper getModelMapper() {
         return new ModelMapper();
     }
+
     @Bean
     public FilterRegistrationBean hiddenHttpMethodFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new HiddenHttpMethodFilter());

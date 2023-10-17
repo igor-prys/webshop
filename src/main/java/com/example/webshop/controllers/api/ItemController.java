@@ -15,42 +15,42 @@ public class ItemController {
     private final ItemService itemService;
 
     @Autowired
-    public ItemController(ItemService itemService){
-        this.itemService=itemService;
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
     }
 
     @GetMapping("/{id}")
-    public Item getItem(@PathVariable long id){
-        Optional<Item>item=itemService.getItem(id);
-        if(item.isEmpty()){
-            throw new NoSuchItemException( String.format("Item with id %d was not found", id));
+    public Item getItem(@PathVariable long id) {
+        Optional<Item> item = itemService.getItem(id);
+        if (item.isEmpty()) {
+            throw new NoSuchItemException(String.format("Item with id %d was not found", id));
         }
         return item.get();
     }
 
     @GetMapping
-    public List<Item> getItems(){
+    public List<Item> getItems() {
         return itemService.getAll();
     }
 
     @PostMapping
-    public Item save(@RequestBody Item item){
+    public Item save(@RequestBody Item item) {
         return itemService.save(item);
     }
 
     @PutMapping
-    public Item updateItem(@RequestBody Item item){
+    public Item updateItem(@RequestBody Item item) {
         return itemService.save(item);
     }
 
     @DeleteMapping("{id}")
-    public String deleteItem(@PathVariable long id){
-        Optional<Item> item=itemService.getItem(id);
-        if(item.isEmpty()){
+    public String deleteItem(@PathVariable long id) {
+        Optional<Item> item = itemService.getItem(id);
+        if (item.isEmpty()) {
             throw new NoSuchItemException(String.format("Item with id %d was not found", id));
         }
         itemService.delete(id);
-        return "Item with id "+id+"was deleted";
+        return "Item with id " + id + "was deleted";
     }
 
 }
