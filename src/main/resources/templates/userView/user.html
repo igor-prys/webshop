@@ -5,10 +5,10 @@
     <title>User</title>
 </head>
 <body>
-<p th:text= "${user.getId()}">  </p>
-<p th:text="${user.getName()}"></p>
-<p th:text="${user.getSurname()}"></p>
-<p th:text="${user.getNickname()}"></p>
+<p th:text= "'id: '+${user.getId()}">  </p>
+<p th:text="'name: '+${user.getName()}"></p>
+<p th:text="'surname: '+${user.getSurname()}"></p>
+<p th:text="'nickname: '+${user.getNickname()}"></p>
 
 <form th:method="DELETE" th:action="@{/users/{id}(id=${user.id})}">
     <input type="submit" value="Delete User"/>
@@ -16,6 +16,10 @@
 
 <form th:method="get" th:action="@{/users/edit/{id}(id=${user.id})}">
     <input type="submit" value="Edit user">
+</form>
+
+<form th:method="get" th:action="@{/users}">
+    <input type="submit" value="All users">
 </form>
 
 
