@@ -26,15 +26,7 @@ public class UserController {
 
     @GetMapping
     public List<UserDto> getUsers() {
-//        List<User>userList= userService.findAll();
-//        List<UserDto>userDtoList=new ArrayList<>();
-//        for(User user:userList){
-//            userDtoList.add(UserMapper.convert(user));
-//        }
-//        return userDtoList;
-
         return userService.findAll().stream().map(user -> userMapper.convert(user)).toList();
-        //return userService.findAll().stream().map(UserMapper::convert).toList();
     }
 
     @GetMapping("/{id}")
@@ -46,8 +38,9 @@ public class UserController {
         User user = userOptional.get();
         return userMapper.convert(user);
     }
+
     @GetMapping("/items/{id}")
-    public List<Item> getUserItems(@PathVariable long  id){
+    public List<Item> getUserItems(@PathVariable long id) {
         Optional<User> userOptional = userService.getUser(id);
         if (userOptional.isEmpty()) {
             throw new NoSuchUserException(String.format("User with id %d was not found", id));

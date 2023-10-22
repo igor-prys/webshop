@@ -40,9 +40,7 @@ public class MvcItemController {
     @GetMapping("/new")
     public String getFormForNewItem(Model model) {
         Item item = new Item();
-        // item.setPresent(false);
-        model.addAttribute("newItem", item);
-        // model.addAttribute("flag", false);
+            model.addAttribute("newItem", item);
         return "itemView/newItem";
     }
 

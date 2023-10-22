@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "items")
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +30,5 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<Item> items;
+
 }

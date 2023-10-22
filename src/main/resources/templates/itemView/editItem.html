@@ -2,17 +2,16 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>New Item</title>
+    <title>Edit item</title>
 </head>
 <body>
-<form th:method="post" th:action="@{/items}" th:object="${newItem}">
-    <label for="name">Enter name</label>
+<form th:method="patch" th:action="@{/items/{id}(id=${editItem.id})}" th:object="${editItem}">
+    <lable for="name">Enter name:</lable>
     <input type="text" th:field="*{name}" id="name">
     <br/>
-    <label for="description">Enter description</label>
+    <lable for="description">Enter description:</lable>
     <input type="text" th:field="*{description}" id="description">
     <br/>
-    <label for="description">Enter description</label>
     <select th:field="*{type}">
         <option th:value="'TOY'" th:text="TOY"></option>
         <option th:value="'FOOD'" th:text="FOOD"></option>
@@ -24,10 +23,11 @@
         <input type="checkbox" th:field="*{present}"/> Is item present in store?
     </label>
     <br/>
-    <input type="submit" value="Create!"/>
+    <lable for="type">Choose type of item:</lable>
+    <input type="text" th:field="*{type}" id="type">
     <br/>
-    <br/>
-    <br/>
+    <input type="submit" value="Save"/>
+
 
 </form>
 </body>
